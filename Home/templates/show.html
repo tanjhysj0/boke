@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block left %}
+<div id="left">
+
+    <article>
+
+        <div class="post">
+            <header>
+                <h2 class="posttitle"><a href="#" title="Permalink to Welcome to Busby – This is the Layout Test" rel="bookmark">{{ one.title }}</a></h2>
+            </header>
+            <!-date->
+            <div class="postdate"><p><span class="postdateno">4</span><br>September</p></div>
+            <div class="postcontent">
+                {% autoescape off %}
+                {{ one.content }}
+                {% endautoescape %}
+            </div>
+
+
+            <div class="postdetails">
+                <p class="postedby"><span class="sep">Posted on </span>
+                    <a href="#" rel="bookmark">
+                        <time class="entry-date" datetime="2008-09-04T23:02:20+00:00" pubdate="">September 4, 2008</time>
+                        time:{{ one.pub_date }}-
+                    </a>
+                    <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="http//wplift.com/themes/busby/author/chip-bennett" title="View all posts by Chip Bennett">Chip Bennett</a></span></p><p class="postcomments"><span>Comments Off</span></p></div>
+        </div>
+
+        <div class="singlemeta"><p>Category: <a href="#" title="View all posts in aciform" rel="category tag">aciform</a>, <a href="#" title="View all posts in Cat A" rel="category tag">Cat A</a>, <a href="#" title="View all posts in Cat B" rel="category tag">Cat B</a>, <a href="#" title="View all posts in Cat C" rel="category tag">Cat C</a>, <a href="#" title="View all posts in sub" rel="category tag">sub</a> Tags : <a href="#" rel="tag">tag1</a> <a href="#" rel="tag">tag2</a> <a href="#" rel="tag">tag3</a></p></div>
+
+    </article><!-- #post-188 -->
+
+    <div id="comments">
+
+
+
+        <p class="nocomments">Comments are closed.</p>
+
+
+
+
+
+    </div><!-- #comments -->
+</div>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% block left %}
+
+    <div id="left">
+    <div id="sliderwrap"><script type="text/javascript" src="/static/js/jquery_002.js"></script>
+        <script type="text/javascript">
+                jQuery('#featured_slider ul').cycle({
+                    fx: 'fade',
+                    prev: '.feat_prev',
+                    next: '.feat_next',
+                    speed: 3000,
+                    timeout: 2000,
+                    pager: null
+                });
+        </script>
+
+        <style>
+
+            #featured_slider {
+                float: left;
+                margin: 0px 0px;
+                position: relative;
+                border: 0px solid;
+                width: 575px;
+                height:266px;
+                overflow:hidden;
+            }
+
+            #featured_slider ul, #featured_slider ul li {
+                list-style: none !important;
+                border: none !important;
+                float: left;
+                margin: 0px;
+                width: 575px;
+                height: 266px;
+            }
+
+
+
+            #featured_slider h2{
+                position:absolute; bottom:0px; left:0px;
+                width:575px;
+                background-color:#000000;
+                color:white;
+                height:50px;
+                line-height:47px;
+                padding-left:10px;
+            }
+
+            #featured_slider a{
+                color:#FFFFFF;
+                font-weight:normal;
+                font-family: Georgia, "Times New Roman", Times, serif;
+                font-size: 24px;
+                font-weight: normal;
+                letter-spacing: -0.5px;
+                width:575px;
+            }
+
+            #featured_slider .feat_prev {
+                background: transparent url(/static/img/sprite.png) no-repeat;
+                background-position: 0px 0px;
+                width: 17px;
+                z-index: 10;
+                height: 16px;
+                position: absolute;
+                left: 20px;
+                cursor: pointer;
+                top: 30px;
+                float: left;
+            }
+
+            #featured_slider .feat_prev:hover {
+                background-position: 0px -16px;
+            }
+
+            #featured_slider .feat_next {
+                background: transparent url(/static/img/sprite.png) no-repeat;
+                background-position: -17px 0px;
+                width: 17px;
+                z-index: 10;
+                height: 16px;
+                position: absolute;
+                left: 40px;
+                top: 30px;
+                cursor: pointer;
+            }
+
+            #featured_slider .feat_next:hover {
+                background-position: -18px -16px;
+            }
+
+            .feat_link {
+                float: right;
+                position: relative;
+                top: -5px;
+            }
+
+            .feat_link a {
+                float: left;
+                font-size: 20px;
+                color: #CCC;
+            }
+
+        </style>
+        <!-- 幻灯片-->
+        <div id="featured_slider">
+            <ul style="position: relative;" id="slider">
+                <li><h2><a href="#">Welcome to Busby – This is the Layout Test</a></h2><a href="#"><img src="/static/img/skater.jpg"></a></li>
+
+                <li><h2><a href="#">Look here for a Readability Test</a></h2><a href="#"><img src="/static/img/skater-in-air.jpg"></a></li>
+
+                <li><h2><a href="#">How about an Images Test ?</a></h2><a href="#"><img src="/static/img/skaters.jpg"></a></li>
+
+                <li><h2><a href="#">Comment Test</a></h2><a href="#"><img src="/static/img/south-bank-graffiti.jpg"></a></li>
+
+                <li><h2><a href="#">Many Tags Many Tags Many Tags</a></h2><a href="#"><img src="/static/img/spray-paint.jpg"></a></li>
+            </ul>
+            <div class="feat_next"></div>
+            <div class="feat_prev"></div>
+        </div></div>
+
+    <!--article list-->
+    {% for row in list %}
+    <article>
+
+        <div class="post">
+            <header>
+                <h2 class="posttitle"><a href="/show/{{ row.id }}" rel="bookmark">{{ row.title }}</a></h2>
+            </header>
+
+            <div class="postdate"><p><span class="postdateno">{{ row.pub_date|date:"d" }}</span><br>{{ row.pub_date|date:"M" }}</p></div>
+            <div class="postcontent">
+                <p>{{ row.description }}</p>
+            </div>
+        </div>
+
+    </article>
+    {% endfor %}
+
+
+
+    <div class="pagination">
+
+        {% for p in paginator.page_range %}
+
+            {% if p == list.number %}
+                <span class="current">第{{ list.number }}页</span>
+                {% else %}
+                <a href="?page={{ p }}" class="inactive">第{{ p }}页</a>
+            {% endif %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

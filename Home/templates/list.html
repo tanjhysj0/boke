@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block left %}
+    <div id="left">
+        <!--article list-->
+        {% for row in list %}
+        <article>
+
+            <div class="post">
+                <header>
+                    <h2 class="posttitle"><a href="/show/{{ row.id }}" rel="bookmark">{{ row.title }}</a></h2>
+                </header>
+
+                <div class="postdate"><p><span class="postdateno">{{ row.pub_date|date:"d" }}</span><br>{{ row.pub_date|date:"M" }}</p></div>
+                <div class="postcontent">
+                    <p>{{ row.description }}</p>
+                </div>
+            </div>
+
+        </article>
+        {% endfor %}
+
+        <div class="pagination">
+            {% for p in paginator.page_range %}
+                {% if p == list.number %}
+                    <span class="current">第{{ list.number }}页</span>
+                    {% else %}
+                    <a href="?page={{ p }}" class="inactive">第{{ p }}页</a>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
